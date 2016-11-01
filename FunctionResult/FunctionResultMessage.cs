@@ -63,17 +63,17 @@ namespace CestnoSoftware
 
         #endregion
 
-        #region Exception
-        private Exception _Exception = null;
-        public Exception Exception
+        #region Is Public
+        private bool _IsPublic = true;
+        public bool IsPublic
         {
             get
             {
-                return this._Exception;
+                return this._IsPublic;
             }
             set
             {
-                this._Exception = value;
+                this._IsPublic = value;
             }
         }
         #endregion
@@ -96,11 +96,12 @@ namespace CestnoSoftware
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="message">The message.</param>
-        public FunctionResultMessage(string fieldName, string message)
+        public FunctionResultMessage(string fieldName, string message, bool isPublic = true)
         {
             this._FieldName = fieldName;
             this._Message = message;
-            this._MessageType = FunctionResultMessageTypes.RuleError;
+            this._MessageType = FunctionResultMessageTypes.Validation;
+            this._IsPublic = isPublic;
         }
 
         /// <summary>
@@ -108,11 +109,12 @@ namespace CestnoSoftware
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="message">The message.</param>
-        public FunctionResultMessage(string fieldName, string message, FunctionResultMessageTypes type)
+        public FunctionResultMessage(string fieldName, string message, FunctionResultMessageTypes type, bool isPublic = true)
         {
             this._FieldName = fieldName;
             this._Message = message;
             this._MessageType = type;
+            this._IsPublic = isPublic;
         }
 
         /// <summary>
@@ -120,10 +122,11 @@ namespace CestnoSoftware
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="message">The message.</param>
-        public FunctionResultMessage(string message, FunctionResultMessageTypes type)
+        public FunctionResultMessage(string message, FunctionResultMessageTypes type, bool isPublic = true)
         {
             this._Message = message;
             this._MessageType = type;
+            this._IsPublic = isPublic;
         }
 
         public FunctionResultMessage()

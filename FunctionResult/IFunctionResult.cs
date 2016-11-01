@@ -3,8 +3,6 @@ namespace CestnoSoftware
 {
     public interface IFunctionResult<T>
     {
-        void AddException(Exception ex);
-        void AddException(string message);
         FunctionResultExtraData ExtraData { get; }
         FunctionResultMessageList Messages { get; set; }
         FunctionResultOperationStatus OperationStatus { get; set; }

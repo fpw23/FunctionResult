@@ -27,7 +27,8 @@ namespace FunctionResult.Tests
             var dividenums = srv.DivideTwoNumbers(5, 0);
 
             Assert.IsFalse(dividenums.WasSuccessful);
-            Assert.IsTrue(dividenums.OperationStatus == CestnoSoftware.FunctionResultOperationStatus.FailureExceptions);
+            Assert.IsTrue(dividenums.Messages.Count == 1);
+            Assert.IsTrue(dividenums.Messages[0].Message.StartsWith("Y can not be 0"));
         }
 
         [TestMethod]
@@ -37,46 +38,12 @@ namespace FunctionResult.Tests
 
             var addevennums = srv.AddTwoEvenNumbers(2, 5);
 
-            if (!addevennums.WasSuccessful)
-            {
-                switch (addevennums.OperationStatus)
-                {
-                    case FunctionResultOperationStatus.FailureExceptions:
-                        //Show error messages
-                        break;
-
-                    case FunctionResultOperationStatus.FailureValidtion:
-                        //Apply validation errors messages to fields on page
-                        break;
-
-                    case FunctionResultOperationStatus.SuccessWarnings:
-                        //Finish the operation but warn the user about the possible problem
-                        break;
-
-                }
-            }
-
             Assert.IsFalse(addevennums.WasSuccessful);
-            Assert.IsTrue(addevennums.OperationStatus == FunctionResultOperationStatus.FailureValidtion);
+            Assert.IsTrue(addevennums.Messages.Count == 1);
+            Assert.IsTrue(addevennums.Messages[0].MessageType ==  FunctionResultMessageTypes.Validation);
+            Assert.IsTrue(addevennums.Messages[0].FieldName == "Y");
 
         }
-
-        [TestMethod]
-        public void Failed_Result_ThrowEx_NoCheck_WasSuccessful()
-        {
-            var srv = new MyService();
-
-            var dividenums = srv.DivideTwoNumbers(5, 0);
-
-            try
-            {
-                var myresult = dividenums.ReturnValue;
-                Assert.Fail();
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(FunctionResultUncheckedException));
-            }
-        }
+       
     }
 }

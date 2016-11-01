@@ -7,9 +7,7 @@ namespace CestnoSoftware
 {
     public enum FunctionResultOperationStatus
     {
-        Success = 1,
-        SuccessWarnings = 2,
-        FailureExceptions = 3,
-        FailureValidtion = 4
+        Error = 0,
+        Success = 1
     }
 }

@@ -10,8 +10,8 @@ namespace CestnoSoftware
         Undefined = 1,
         Error = 2,
         Warning = 3,
-        RuleError = 4,
-        RuleWarning = 5,
+        Validation = 4,
+        Info = 5,
         Success = 6
     }
 }

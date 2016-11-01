@@ -43,11 +43,9 @@
     <Compile Include="FunctionResult.cs" />
     <Compile Include="FunctionResultExtraData.cs" />
     <Compile Include="FunctionResultMessage.cs" />
-    <Compile Include="FunctionResultMessageDisplayTypes.cs" />
     <Compile Include="FunctionResultMessageList.cs" />
     <Compile Include="FunctionResultMessageTypes.cs" />
     <Compile Include="FunctionResultOperationStatus.cs" />
-    <Compile Include="FunctionResultUncheckedException.cs" />
     <Compile Include="FunctionResultVoid.cs" />
     <Compile Include="IFunctionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
